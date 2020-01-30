@@ -9,7 +9,7 @@ using SeguimientoDeActividades.Models;
 
 namespace SeguimientoDeActividades.Controllers
 {
-    [Route("api/Recursos")]
+    [Route("api/Recurso")]
     [ApiController]
     public class RecursoController : ControllerBase
     {
