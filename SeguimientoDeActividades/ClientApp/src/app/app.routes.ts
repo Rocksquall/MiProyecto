@@ -4,7 +4,7 @@ import { RecursoComponent } from './components/recurso/recurso.component';
 
 const APP_ROUTES: Routes = [
     { path: 'recurso', component: RecursoComponent },
-   { path: '**', pathMatch:'full',redirectTo:'' }
+   { path: '**', pathMatch:'full',redirectTo:'recurso' }
 
 ];
 

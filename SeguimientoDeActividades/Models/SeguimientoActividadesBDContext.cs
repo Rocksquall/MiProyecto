@@ -15,15 +15,15 @@ namespace SeguimientoDeActividades.Models
         {
         }
 
-        public virtual DbSet<Actividad> Actividad { get; set; }
-        public virtual DbSet<Cliente> Cliente { get; set; }
-        public virtual DbSet<Cronograma> Cronograma { get; set; }
-        public virtual DbSet<CronogramaHasRecurso> CronogramaHasRecurso { get; set; }
-        public virtual DbSet<Estimacion> Estimacion { get; set; }
-        public virtual DbSet<Fase> Fase { get; set; }
-        public virtual DbSet<Modulo> Modulo { get; set; }
-        public virtual DbSet<Proyecto> Proyecto { get; set; }
-        public virtual DbSet<Recurso> Recurso { get; set; }
+        public virtual DbSet<Actividad> Actividades { get; set; }
+        public virtual DbSet<Cliente> Clientes { get; set; }
+        public virtual DbSet<Cronograma> Cronogramas { get; set; }
+        public virtual DbSet<CronogramaHasRecurso> CronogramaHasRecursos { get; set; }
+        public virtual DbSet<Estimacion> Estimaciones { get; set; }
+        public virtual DbSet<Fase> Fases { get; set; }
+        public virtual DbSet<Modulo> Modulos { get; set; }
+        public virtual DbSet<Proyecto> Proyectos { get; set; }
+        public virtual DbSet<Recurso> Recursos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

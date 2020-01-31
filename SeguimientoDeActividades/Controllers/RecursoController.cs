@@ -9,7 +9,7 @@ using SeguimientoDeActividades.Models;
 
 namespace SeguimientoDeActividades.Controllers
 {
-    [Route("api/Recurso")]
+    [Route("api/[controller]")]
     [ApiController]
     public class RecursoController : ControllerBase
     {
@@ -20,18 +20,27 @@ namespace SeguimientoDeActividades.Controllers
             _context = context;
         }
 
-        // GET: api/Recurso
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Recurso>>> GetRecurso()
+        public IEnumerable<Recurso> PruebaConexion()
         {
-            return await _context.Recurso.ToListAsync();
+            return new List<Recurso>()
+            {
+                new Recurso{Idrecurso=1,RecursoNombre="camilo",Recursodisponibilidad=24,Recursocorreo="asdasd"},
+               new Recurso{Idrecurso=2,RecursoNombre="Andres",Recursodisponibilidad=12,Recursocorreo="asdasad"}
+            };
         }
+        // GET: api/Recurso
+        ////[HttpGet]
+        ////public async Task<ActionResult<IEnumerable<Recurso>>> GetRecurso()
+        ////{
+        ////    return await _context.Recurso.ToListAsync();
+        ////}
 
         // GET: api/Recurso/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Recurso>> GetRecurso(int id)
         {
-            var recurso = await _context.Recurso.FindAsync(id);
+            var recurso = await _context.Recursos.FindAsync(id);
 
             if (recurso == null)
             {
@@ -79,7 +88,7 @@ namespace SeguimientoDeActividades.Controllers
         [HttpPost]
         public async Task<ActionResult<Recurso>> PostRecurso(Recurso recurso)
         {
-            _context.Recurso.Add(recurso);
+            _context.Recursos.Add(recurso);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRecurso", new { id = recurso.Idrecurso }, recurso);
@@ -89,13 +98,13 @@ namespace SeguimientoDeActividades.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Recurso>> DeleteRecurso(int id)
         {
-            var recurso = await _context.Recurso.FindAsync(id);
+            var recurso = await _context.Recursos.FindAsync(id);
             if (recurso == null)
             {
                 return NotFound();
             }
 
-            _context.Recurso.Remove(recurso);
+            _context.Recursos.Remove(recurso);
             await _context.SaveChangesAsync();
 
             return recurso;
@@ -103,7 +112,7 @@ namespace SeguimientoDeActividades.Controllers
 
         private bool RecursoExists(int id)
         {
-            return _context.Recurso.Any(e => e.Idrecurso == id);
+            return _context.Recursos.Any(e => e.Idrecurso == id);
         }
     }
 }

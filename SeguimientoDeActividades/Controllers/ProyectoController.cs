@@ -24,14 +24,14 @@ namespace SeguimientoDeActividades.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Proyecto>>> GetProyecto()
         {
-            return await _context.Proyecto.ToListAsync();
+            return await _context.Proyectos.ToListAsync();
         }
 
         // GET: api/Proyecto/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Proyecto>> GetProyecto(int id)
         {
-            var proyecto = await _context.Proyecto.FindAsync(id);
+            var proyecto = await _context.Proyectos.FindAsync(id);
 
             if (proyecto == null)
             {
@@ -79,7 +79,7 @@ namespace SeguimientoDeActividades.Controllers
         [HttpPost]
         public async Task<ActionResult<Proyecto>> PostProyecto(Proyecto proyecto)
         {
-            _context.Proyecto.Add(proyecto);
+            _context.Proyectos.Add(proyecto);
             try
             {
                 await _context.SaveChangesAsync();
@@ -103,13 +103,13 @@ namespace SeguimientoDeActividades.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Proyecto>> DeleteProyecto(int id)
         {
-            var proyecto = await _context.Proyecto.FindAsync(id);
+            var proyecto = await _context.Proyectos.FindAsync(id);
             if (proyecto == null)
             {
                 return NotFound();
             }
 
-            _context.Proyecto.Remove(proyecto);
+            _context.Proyectos.Remove(proyecto);
             await _context.SaveChangesAsync();
 
             return proyecto;
@@ -117,7 +117,7 @@ namespace SeguimientoDeActividades.Controllers
 
         private bool ProyectoExists(int id)
         {
-            return _context.Proyecto.Any(e => e.Idproyecto == id);
+            return _context.Proyectos.Any(e => e.Idproyecto == id);
         }
     }
 }
